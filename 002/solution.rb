@@ -1,14 +1,14 @@
 # Returns Fibonnaci sequence up to the cap
 def fib(cap)
-  list = [0, 1]
-    
+	list = [0, 1]    
 	while list.last < cap do
 		list.push(list[-1] + list[-2])
 	end
+	list
 end
 
 def getEvens(list)
-	list.delete_if { n % 2 != 0 }
+	list.delete_if { |n| n % 2 != 0 }
 end
 
 def addList(list)
