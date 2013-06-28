@@ -1,16 +1,28 @@
+# MAX = 600851475143
+
+MAX = 6008
+
+primes_list = []
+
 def isPrime(num)
   isPrime = true
 	upTo = (2...num).to_a
 	upTo.each do |n|
 		if (num % n == 0)
-			isPrime = false
+			return isPrime = false
 		end
 	end
-	isPrime
+  if isPrime is true
+    primes_list.push num
+	end
 end
 
-list = (1...37).to_a
 
-list.each do |item|
-	puts isPrime(item)
-end
+
+primes_list.length
+
+# list = (1..(MAX+1)/2).to_a
+
+# puts list.length
+
+# list.delete_if { |item| isPrime(item) }
