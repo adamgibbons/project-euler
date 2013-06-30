@@ -1,8 +1,6 @@
-# MAX = 600851475143
+MAX = 600851475143
 
-MAX = 6008
-
-primes_list = []
+primes_list = [3]
 
 def isPrime(num)
   isPrime = true
@@ -12,17 +10,24 @@ def isPrime(num)
 			return isPrime = false
 		end
 	end
-  if isPrime is true
-    primes_list.push num
-	end
+end
+
+def addNextPrime(primes_list)
+  n = 1
+  until isPrime(primes_list.last + n) do
+    n += 1
+  end
+  primes_list.push(primes_list.last + n)
+end
+
+def isFactor(factor, multiple)
+  return true if (multiple % factor == 0)
 end
 
 
+until primes_list.last >= (MAX/2) do
+  puts "#{primes_list.last} is factor of #{MAX}" if isFactor(primes_list.last, MAX)
+  addNextPrime(primes_list)
+end
 
-primes_list.length
-
-# list = (1..(MAX+1)/2).to_a
-
-# puts list.length
-
-# list.delete_if { |item| isPrime(item) }
+puts "done"
