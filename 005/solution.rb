@@ -11,7 +11,7 @@
 START_WITH = (1..20).to_a.max
 
 def isDivisible(dividend, divisor)
-  return true if divisor == 0 or divisor == 1
+  return true if divisor == (0 or 1)
   return false if dividend % (divisor) != 0
   divisor -= 1
   isDivisible(dividend, divisor)
