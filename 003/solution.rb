@@ -1,6 +1,6 @@
 MAX = 600851475143
 
-primes_list = [3]
+primes_list = [2]
 
 def isPrime(num)
   isPrime = true
