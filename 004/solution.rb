@@ -17,28 +17,19 @@ end
 
 def isPalindrome(num)
   str = num.to_s
-  return true if str.length == 0 or str.length == 1
+  return true if str.length == (0 or 1)
   first = str.slice!(0)
   last = str.slice!(-1)
-  if first != last
-    return false
-  else
-    isPalindrome(str)
-  end
+  first != last ? false : isPalindrome(str)
 end
 
 y = 100
 while y < 1000 do
   (100..999).each do |x|
     product_list.push getProduct(x, y)
-    if isPalindrome(product_list.last)
-      puts "#{product_list.last} is a palindrome!"
-      palindrome_list.push product_list.last
-    end
+    palindrome_list.push product_list.last if isPalindrome(product_list.last)
   end
   y += 1
 end
 
-puts "product list: #{product_list}"
-puts "palindrome list: #{palindrome_list}"
 puts palindrome_list.max
