@@ -42,4 +42,3 @@ end
 puts "product list: #{product_list}"
 puts "palindrome list: #{palindrome_list}"
 puts palindrome_list.max
-
