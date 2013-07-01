@@ -8,19 +8,38 @@
 #
 ################################
 
+product_list = []
+palindrome_list = []
 
-def isPalindrome(str)
-  flag = true
+def getProduct(x, y)
+  return x * y
+end
 
-  until str.length < 2 or flag == false do
-    first = str.slice!(0)
-    last = str.slice!(-1)
-    if first == last
-      isPalindrome(str)
-    else
-      flag = false
+def isPalindrome(num)
+  str = num.to_s
+  return true if str.length == 0 or str.length == 1
+  first = str.slice!(0)
+  last = str.slice!(-1)
+  if first != last
+    return false
+  else
+    isPalindrome(str)
+  end
+end
+
+y = 100
+while y < 1000 do
+  (100..999).each do |x|
+    product_list.push getProduct(x, y)
+    if isPalindrome(product_list.last)
+      puts "#{product_list.last} is a palindrome!"
+      palindrome_list.push product_list.last
     end
   end
-
-  return flag
+  y += 1
 end
+
+puts "product list: #{product_list}"
+puts "palindrome list: #{palindrome_list}"
+puts palindrome_list.max
+
