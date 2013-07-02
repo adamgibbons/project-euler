@@ -21,7 +21,7 @@ def getProduct(input)
   multiple
 end
 
-while q < (num.length) do
+while q < num.length do
   substring = num[p..q]
   product = getProduct(substring)
   greatest_product = product if product > greatest_product
