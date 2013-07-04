@@ -11,16 +11,17 @@
 
 def sieveUpTo(max)
   primes_list = (2..max).to_a
+  temp_list = []
+
   primes_list.each do |p|
-    i = 2
-    temp_list = []
+    i = 2    
     while (p * i) <= primes_list.last do
       temp_list.push(p * i)
       i += 1
     end
-    primes_list = primes_list - temp_list
   end
-  primes_list
+
+  primes_list = primes_list - temp_list
 end
 
-puts sieveUpTo(2000000)
+puts sieveUpTo(100000)
