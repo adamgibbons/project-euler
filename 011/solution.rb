@@ -77,14 +77,15 @@ end
 
 # DIAGONAL
 
-def checkDiagonalTLtoBR(grid)
+def greatestDiagonalProductLtoR(grid)
   product_list = []
   height, length = 20, 20
-  y, x = 0, 0
+  y = 0
   while y < (height - 3) do
+    x = 0
     while x < (length - 3) do
-      letter = [grid[y][x], grid[y + 1][x + 1], grid[y + 2][x + 2], grid[y + 3][x + 3]]
-      product_list.push(getProduct(letter))
+      set = [grid[y][x], grid[y + 1][x + 1], grid[y + 2][x + 2], grid[y + 3][x + 3]]
+      product_list.push(getProduct(set))
       x += 1
     end
     y += 1
@@ -100,19 +101,13 @@ def reverseGrid(grid)
   reversed_grid
 end
 
-def checkDiagonalTRtoBL(grid)
+def greatestDiagonalProductRtoL(grid)
   reversed_grid = reverseGrid(grid)
-  checkDiagonalTLtoBR(reversed_grid)
+  greatestDiagonalProductLtoR(reversed_grid)
 end
 
 grid = readGrid('number_grid.txt')
-
-greatest_horizontal_product = greatestHorizontalProduct(grid)
-greatest_vertical_product = greatestVerticalProduct(grid)
-greatest_diagonal_l_to_r_product = checkDiagonalTLtoBR(grid)
-greatest_diagonal_r_to_l_product = checkDiagonalTRtoBL(grid)
-
-puts greatest_horizontal_product
-puts greatest_vertical_product
-puts greatest_diagonal_r_to_l_product
-puts greatest_diagonal_l_to_r_product
+puts [greatestHorizontalProduct(grid), 
+      greatestVerticalProduct(grid), 
+      greatestDiagonalProductLtoR(grid), 
+      greatestDiagonalProductRtoL(grid)].max
