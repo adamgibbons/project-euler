@@ -24,11 +24,36 @@ def getNthTriangleNumber(n)
 		list.push n
 		n -= 1
 	end
-
 	accumulator = 0
 	list.each {|n| accumulator += n}
 	accumulator
-
 end
 
-puts getNthTriangleNumber(7)
+def isDivisor(dividend, divisor)
+	return true if (dividend % divisor == 0)
+	false
+end
+
+def countFactorsOf(dividend)
+	return 1 if dividend == 1
+	factors = [1, dividend]
+	divisor = 2
+	until divisor > (dividend/2) do
+		factors.push divisor if isDivisor(dividend, divisor)
+		divisor += 1
+	end
+	factors.length
+end
+
+def getTriangleNumberWithNDivisors(divisorCount)
+	n = 1
+	until countFactorsOf(getNthTriangleNumber(n)) > divisorCount do
+		n += 1
+	end
+	getNthTriangleNumber(n)
+end
+
+puts getTriangleNumberWithNDivisors(500)
+
+
+
