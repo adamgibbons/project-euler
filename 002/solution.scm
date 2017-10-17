@@ -4,18 +4,10 @@
 
 ; By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
-(define fib
-  (lambda (n)
-    (cond
-      ((< n 2) 1)
-      (else (+ (fib (- n 1)) (fib (- n 2)))))))
-        
-
 (define list-fibs
   (lambda (lat max)
-    (cond
-      ((null? lat) (list-fibs '(2 1) max))
-      ((> (+ (car lat) (cadr lat)) max) lat)
-      (else (list-fibs (cons (fib (+ (length lat) 1)) lat) max)))))
+    (if (> (+ (car lat) (cadr lat)) max)
+        lat
+        (list-fibs (cons (+ (car lat) (cadr lat)) lat) max))))
 
-(fold-left + 0 (filter even? (list-fibs '() 400000)))
+(fold-left + 0 (filter even? (list-fibs '(1 0) 4000000)))
